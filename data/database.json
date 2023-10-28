@@ -789,6 +789,28 @@
       "balance": 0,
       "createdAt": "2023-10-28T04:06:23.986Z",
       "modifiedAt": "2023-10-28T04:06:23.986Z"
+    },
+    {
+      "id": "z2deMgvXI",
+      "uuid": "c440ba1c-ed38-4247-a456-7a5e133d3eb5",
+      "firstName": "1234567890",
+      "lastName": "ABCDEFGHIJKLMNOPKRSTUVWXYZ",
+      "username": "ABCDEFGHIJKLMNOPKRSTUVWXYZ",
+      "password": "$2a$10$grcxDAOlp0djZK/YvRIt8eRvxtww6TGEL38eVcPcbIGaJe6PP.4D.",
+      "balance": 0,
+      "createdAt": "2023-10-28T04:09:12.896Z",
+      "modifiedAt": "2023-10-28T04:09:12.896Z"
+    },
+    {
+      "id": "lkdWRxjcz",
+      "uuid": "bf32f3cf-3196-48be-9115-00e553f08d53",
+      "firstName": "!@#$%^&*()_+?><",
+      "lastName": "ABCDEFGHIJKLMNOPKRSTUVWXYZ",
+      "username": "ABCDEFGHIJKLMNOPKRSTUVWXYZ",
+      "password": "$2a$10$W/yaZaEkYyk5QcdyxmUBgOR4aTKx.cl/9zgEqKuJ85pleoyCrHRAu",
+      "balance": 0,
+      "createdAt": "2023-10-28T04:09:18.478Z",
+      "modifiedAt": "2023-10-28T04:09:18.478Z"
     }
   ],
   "contacts": [

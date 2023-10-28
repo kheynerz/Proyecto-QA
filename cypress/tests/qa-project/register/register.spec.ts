@@ -1,6 +1,7 @@
 const HTTP_URL = "http://localhost:3000";
 
-/*
+describe("User registration", () => {
+  /*
     Test Name: CP 49: Should display signup error on last-name.
     Objetive: Test the registration form with blank space on last-name to force an error.
     
@@ -14,7 +15,6 @@ const HTTP_URL = "http://localhost:3000";
     Expected Result: The expected result is an error on the lastname field 
         and the submit button to be disabled
 */
-describe("User registration", () => {
   it("CP 49: Should display signup error on last-name", function () {
     cy.intercept("GET", "/signup");
 
@@ -99,6 +99,7 @@ describe("User registration", () => {
 
     cy.url().should("eq", `${HTTP_URL}/signin`);
     cy.visualSnapshot("User created succesfully");
+    cy.visualSnapshot("User created");
   });
   /*
     Test Name: CP 52: Should display signup error on confirm-password, first-name field with numbers
@@ -155,6 +156,7 @@ describe("User registration", () => {
     cy.getBySel("signup-submit").click();
 
     cy.url().should("eq", `${HTTP_URL}/signin`);
+    cy.visualSnapshot("User created");
   });
   /*
     Test Name: CP 54: Should display signup error on confirm-password, symbols on first-name
