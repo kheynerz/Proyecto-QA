@@ -1,6 +1,10 @@
-const HTTP_URL = "http://localhost:3000";
+import { HTTP_URL } from "../../constants";
 
 describe("User registration", () => {
+  beforeEach(() => {
+    cy.intercept("GET", "/signup");
+    cy.visit("/signup");
+  });
   /*
     Test Name: CP 49: Should display signup error on last-name.
     Objetive: Test the registration form with blank space on last-name to force an error.
@@ -16,10 +20,6 @@ describe("User registration", () => {
         and the submit button to be disabled
 */
   it("CP 49: Should display signup error on last-name", function () {
-    cy.intercept("GET", "/signup");
-
-    cy.visit("/signup");
-
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
 
     cy.getBySel("signup-last-name").type("Lastname").find("input").clear().blur();
@@ -50,9 +50,6 @@ describe("User registration", () => {
         and confirm-password, the submit button should be disabled
 */
   it("CP 50: Should display signup error on last-name and confirm-password", function () {
-    cy.intercept("GET", "/signup");
-    cy.visit("/signup");
-
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
 
     cy.getBySel("signup-last-name").type("Lastname").find("input").clear().blur();
@@ -86,9 +83,6 @@ describe("User registration", () => {
         and redirection to the sign-in page.
 */
   it("CP 51: Should create user with numeric first-name", function () {
-    cy.intercept("GET", "/signup");
-    cy.visit("/signup");
-
     cy.getBySel("signup-first-name").type("1234567890").find("input").blur();
     cy.getBySel("signup-last-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-username").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
@@ -116,9 +110,6 @@ describe("User registration", () => {
         and the submit button to be disabled
 */
   it("CP 52: Should display signup error on confirm-password, first-name field with numbers", function () {
-    cy.intercept("GET", "/signup");
-    cy.visit("/signup");
-
     cy.getBySel("signup-first-name").type("1234567890").find("input").blur();
     cy.getBySel("signup-last-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-username").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
@@ -144,9 +135,6 @@ describe("User registration", () => {
         and redirection to the sign-in page.
 */
   it("CP 53: Should create user, first-name field with symbols", function () {
-    cy.intercept("GET", "/signup");
-    cy.visit("/signup");
-
     cy.getBySel("signup-first-name").type("!@#$%^&*()_+?><").find("input").blur();
     cy.getBySel("signup-last-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-username").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
@@ -173,9 +161,6 @@ describe("User registration", () => {
         and the submit button to be disabled
 */
   it("CP 54: Should display signup error on confirm-password,first-name field with symbols", function () {
-    cy.intercept("GET", "/signup");
-    cy.visit("/signup");
-
     cy.getBySel("signup-first-name").type("!@#$%^&*()_+?><").find("input").blur();
     cy.getBySel("signup-last-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-username").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
