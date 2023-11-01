@@ -1,7 +1,12 @@
 import { HTTP_URL, userInfo } from "../../constants";
+const apiGraphQL = `${Cypress.env("apiUrl")}/graphql`;
 
 describe("Transaction test suite", () => {
   beforeEach(() => {
+    //Create test seed data to ensure that the tests will run correctly and independently.
+    cy.task("db:seed");
+    cy.intercept("POST", apiGraphQL, () => {});
+
     //Before running the test, log in and navigate to create a bank account.
     cy.intercept("GET", "/signin");
     cy.visit(`${HTTP_URL}/signin`);
