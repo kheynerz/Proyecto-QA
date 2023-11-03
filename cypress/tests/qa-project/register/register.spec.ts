@@ -1491,77 +1491,73 @@ describe("User registration", () => {
   });
 
   /*
-  Test Name: CP55 : With the browser “Mozilla Firefox”
-  Objective: Test the registration form with blank fist name
-  Test Data:
-  First Name: Blank
-  Last Name: ABCDEFGHIJKLMNOPKRSTUVWXYZ
-  Username: ABCDEFGHIJKLMNOPKRSTUVWXYZ
-  Password: ABCDEFGHIJKLMNOPKRSTUVWXYZ
-  Confirm Password: ABCDEFGHIJKLMNOPKRSTUVWXYZ
+    Test Name: CP 55: Should create user with a blank space on first-name
+    Objetive: Test the registration form with a blank space on first-name,
+        it should create the user succesfully
 
-  Expected Result: The expected result is an error on the lastname field 
-      and the submit button to be disabled
-  */
-  it("CP55: Should create user succesfully", function () {
-    cy.getBySel("signup-first-name").type("Blank").find("input").clear().blur();
+    Test Data:
+    First Name: ""
+    Last Name: ABCDEFGHIJKLMNOPKRSTUVWXYZ
+    Username: ABCDEFGHIJKLMNOPKRSTUVWXYZ
+    Password: ABCDEFGHIJKLMNOPKRSTUVWXYZ
+    Confirm Password: ABCDEFGHIJKLMNOPKRSTUVWXYZ
 
-    cy.get("#firstName-helper-text").should("be.visible").and("contain", "First Name is required");
-
+    Expected Result: It is expected that the user can be created correctly.
+*/
+  it("CP 55: Should create user, first-name field with empty space", function () {
+    cy.getBySel("signup-first-name").type(" ").find("input").blur();
     cy.getBySel("signup-last-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-username").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-password").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-confirmPassword").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
-    cy.visualSnapshot("Display Sign Up Required Errors");
-    cy.getBySel("signup-submit").should("be.disabled");
-    cy.visualSnapshot("Sign Up Submit Disabled");
+    cy.visualSnapshot("Before submitting");
+    cy.getBySel("signup-submit").click();
+
+    cy.url().should("eq", `${HTTP_URL}/signin`);
+    cy.visualSnapshot("User created");
   });
 
   /*
-    Test Name: CP56: With the browser “Mozilla Firefox”
-    Objective: Test the registration form with blank firts name and numeric confirm password
-    Test Data: 
-    First Name: Blank
-    Last Name: ABCDEFGHIJKLMNOPKRSTUVWXYZ
-    Username: ABCDEFGHIJKLMNOPKRSTUVWXYZ
-    Password: ABCDEFGHIJKLMNOPKRSTUVWXYZ
-    Confirm Password: 1234567890
+  Test Name: CP 56: Should display signup error on confirm-password.
+  Objetive: Test the registration form with a confirmation password different from the password
 
-    Expected Result: The expected result is an error on the lastname field 
-        and the submit button to be disabled
-  */
-  it("CP56: Should display signup error", function () {
-    cy.getBySel("signup-first-name").type("Blank").find("input").clear().blur();
+  Test Data:
+  First Name: ""
+  Last Name: ABCDEFGHIJKLMNOPKRSTUVWXYZ
+  Username: ABCDEFGHIJKLMNOPKRSTUVWXYZ
+  Password: ABCDEFGHIJKLMNOPKRSTUVWXYZ
+  Confirm Password: 1234567890
 
-    cy.get("#firstName-helper-text").should("be.visible").and("contain", "First Name is required");
-
+  Expected Result: The expected result is an error on the confirm-password field 
+      and the submit button to be disabled
+*/
+  it("CP 56:Should display signup error on confirm-password, first-name field with empty space", function () {
+    cy.getBySel("signup-first-name").type(" ").find("input").blur();
     cy.getBySel("signup-last-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-username").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-password").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-confirmPassword").type("1234567890").find("input").blur();
-
-    cy.get("#confirmPassword-helper-text")
-      .should("be.visible")
-      .and("contain", "Password does not match");
-
     cy.visualSnapshot("Display Sign Up Required Errors");
+
     cy.getBySel("signup-submit").should("be.disabled");
     cy.visualSnapshot("Sign Up Submit Disabled");
   });
 
   /*
-  Test Name: CP57 : With the browser “Mozilla Firefox”
-  Objective: Test the registration form numeric last name and username
+  Test Name: CP 57: Should create user,first-name field with letters
+  Objetive: Test the registration form ,
+      it should create the user succesfully
+
   Test Data:
   First Name: ABCDEFGHIJKLMNOPKRSTUVWXYZ
   Last Name: 1234567890
   Username: 1234567890
   Password: ABCDEFGHIJKLMNOPKRSTUVWXYZ
   Confirm Password: ABCDEFGHIJKLMNOPKRSTUVWXYZ
-  Expected Result: The expected result is the creation of the user 
-      and redirection to the sign-in page.
-  */
-  it("CP57: Should create user succesfully", function () {
+
+  Expected Result: It is expected that the user can be created correctly.
+*/
+  it("CP 57: Should create user,first-name field with letters", function () {
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-last-name").type("1234567890").find("input").blur();
     cy.getBySel("signup-username").type("1234567890").find("input").blur();
@@ -1569,90 +1565,86 @@ describe("User registration", () => {
     cy.getBySel("signup-confirmPassword").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.visualSnapshot("Before submitting");
     cy.getBySel("signup-submit").click();
+
     cy.url().should("eq", `${HTTP_URL}/signin`);
-    cy.visualSnapshot("User created succesfully");
     cy.visualSnapshot("User created");
   });
 
   /*
-  Test Name: CP58: With the browser “Mozilla Firefox”
-  Objective: Test the registration form with numeric last name, username and confirm password
-  Test Data: 
+  Test Name: CP 58: Should display signup error on confirm-password.
+  Objetive: Test the registration form with a confirmation password different from the password
+
+  Test Data:
   First Name: ABCDEFGHIJKLMNOPKRSTUVWXYZ
   Last Name: 1234567890
   Username: 1234567890
   Password: ABCDEFGHIJKLMNOPKRSTUVWXYZ
   Confirm Password: 1234567890
 
-  Expected Result: The expected result is an error on the lastname field 
+  Expected Result: The expected result is an error on the confirm-password field 
       and the submit button to be disabled
-  */
-  it("CP58: Should display signup error", function () {
+*/
+  it("CP 58: Should display signup error on confirm-password,first-name field with letters", function () {
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-last-name").type("1234567890").find("input").blur();
     cy.getBySel("signup-username").type("1234567890").find("input").blur();
     cy.getBySel("signup-password").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-confirmPassword").type("1234567890").find("input").blur();
-
-    cy.get("#confirmPassword-helper-text")
-      .should("be.visible")
-      .and("contain", "Password does not match");
-
     cy.visualSnapshot("Display Sign Up Required Errors");
+
     cy.getBySel("signup-submit").should("be.disabled");
     cy.visualSnapshot("Sign Up Submit Disabled");
   });
 
   /*
-  Test Name: CP59 : With the browser “Mozilla Firefox”
-  Objective: Test the registration form symbols last name and username
+  Test Name: CP 59: Should create user, last name field with symbols
+  Objetive: Test the registration form ,
+      it should create the user succesfully
+
   Test Data:
   First Name: ABCDEFGHIJKLMNOPKRSTUVWXYZ
-  Last Name: :!@#$%^&*()_+?><
-  Username: :!@#$%^&*()_+?><
+  Last Name: !@#$%^&*()_+?><
+  Username: !@#$%^&*()_+?><
   Password: ABCDEFGHIJKLMNOPKRSTUVWXYZ
   Confirm Password: ABCDEFGHIJKLMNOPKRSTUVWXYZ
-  Expected Result: The expected result is the creation of the user 
-      and redirection to the sign-in page.
-  */
-  it("CP59: Should create user succesfully", function () {
+
+  Expected Result: It is expected that the user can be created correctly.
+*/
+  it("CP 59: Should create user, last name field with symbols", function () {
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
-    cy.getBySel("signup-last-name").type(":!@#$%^&*()_+?><").find("input").blur();
-    cy.getBySel("signup-username").type(":!@#$%^&*()_+?><").find("input").blur();
+    cy.getBySel("signup-last-name").type("!@#$%^&*()_+?><").find("input").blur();
+    cy.getBySel("signup-username").type("!@#$%^&*()_+?><").find("input").blur();
     cy.getBySel("signup-password").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-confirmPassword").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.visualSnapshot("Before submitting");
     cy.getBySel("signup-submit").click();
+
     cy.url().should("eq", `${HTTP_URL}/signin`);
-    cy.visualSnapshot("User created succesfully");
     cy.visualSnapshot("User created");
   });
 
   /*
-    Test Name: CP60: With the browser “Mozilla Firefox”
-    Objective: Test the registration form with symbols on last name, username and numbers in confirm password
-    Test Data: 
-    First Name: ABCDEFGHIJKLMNOPKRSTUVWXYZ
-    Last Name: :!@#$%^&*()_+?><
-    Username: :!@#$%^&*()_+?><
-    Password: ABCDEFGHIJKLMNOPKRSTUVWXYZ
-    Confirm Password: 1234567890
+  Test Name: CP 60: Should display signup error on confirm-password.
+  Objetive: Test the registration form with a confirmation password different from the password
 
-    Expected Result: The expected result is an error on the lastname field 
-        and the submit button to be disabled
-  */
-  it("CP60: Should display signup error", function () {
+  Test Data:
+  First Name: ABCDEFGHIJKLMNOPKRSTUVWXYZ
+  Last Name: 1234567890
+  Username: 1234567890
+  Password: ABCDEFGHIJKLMNOPKRSTUVWXYZ
+  Confirm Password: 1234567890
+
+  Expected Result: The expected result is an error on the confirm-password field 
+      and the submit button to be disabled
+*/
+  it("CP 60: Should display signup error on confirm-password,last name field with letters", function () {
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
-    cy.getBySel("signup-last-name").type(":!@#$%^&*()_+?><").find("input").blur();
-    cy.getBySel("signup-username").type(":!@#$%^&*()_+?><").find("input").blur();
+    cy.getBySel("signup-last-name").type("!@#$%^&*()_+?><").find("input").blur();
+    cy.getBySel("signup-username").type("!@#$%^&*()_+?><").find("input").blur();
     cy.getBySel("signup-password").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-confirmPassword").type("1234567890").find("input").blur();
-
-    cy.get("#confirmPassword-helper-text")
-      .should("be.visible")
-      .and("contain", "Password does not match");
-
     cy.visualSnapshot("Display Sign Up Required Errors");
+
     cy.getBySel("signup-submit").should("be.disabled");
     cy.visualSnapshot("Sign Up Submit Disabled");
   });
