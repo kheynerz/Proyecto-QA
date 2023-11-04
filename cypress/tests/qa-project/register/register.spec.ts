@@ -1100,7 +1100,7 @@ describe("User registration", () => {
 
       Expected Result: The expected result is submit button to be enabled
     */
-  it("CP 41: Creación Usuario41", function () {
+  it("CP41: Should create user succesfully", function () {
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-last-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-username").type("!@#$%^&*()_+?><").find("input").blur();
@@ -1124,7 +1124,7 @@ describe("User registration", () => {
     
         Expected Result: The expected result is submit button to be disabled
     */
-  it("CP 42: Creación Usuario42", function () {
+  it("CP42: Should display signup error confirm password", function () {
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-last-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-username").type("!@#$%^&*()_+?><").find("input").blur();
@@ -1154,7 +1154,7 @@ describe("User registration", () => {
         Expected Result: The expected result is an error on the Username, Password and Confirm Password fields
             and the submit button to be disabled
     */
-  it("CP 43: Creación Usuario43", function () {
+  it("CP43: Should display signup error Username, Password and Confirm Password", function () {
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-last-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
 
@@ -1189,7 +1189,7 @@ describe("User registration", () => {
         Expected Result: The expected result is an error on the Username and Password fields
             and the submit button to be disabled
     */
-  it("CP 44: Creación Usuario44", function () {
+  it("CP44: Should display signup error Username and Password", function () {
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-last-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
 
@@ -1223,7 +1223,7 @@ describe("User registration", () => {
     
         Expected Result: The expected result is submit button to be enabled
     */
-  it("CP 45: Creación Usuario45", function () {
+  it("CP45: Should create user succesfully", function () {
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-last-name").type("1234567890").find("input").blur();
     cy.getBySel("signup-username").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
@@ -1247,7 +1247,7 @@ describe("User registration", () => {
     
         Expected Result: The expected result is submit button to be disabled
     */
-  it("CP 46: Creación Usuario46", function () {
+  it("CP46: Should display signup error Confirm Password", function () {
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-last-name").type("1234567890").find("input").blur();
     cy.getBySel("signup-username").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
@@ -1276,7 +1276,7 @@ describe("User registration", () => {
     
         Expected Result: The expected result is submit button to be enabled
     */
-  it("CP 47: Creación Usuario47", function () {
+  it("CP47: Should create user succesfully", function () {
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-last-name").type("!@#$%^&*()_+?><").find("input").blur();
     cy.getBySel("signup-username").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
@@ -1300,7 +1300,7 @@ describe("User registration", () => {
     
         Expected Result: The expected result is submit button to be disabled
     */
-  it("CP 48: Creación Usuario48", function () {
+  it("CP48: Should display signup error Confirm Password", function () {
     cy.getBySel("signup-first-name").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
     cy.getBySel("signup-last-name").type("!@#$%^&*()_+?><").find("input").blur();
     cy.getBySel("signup-username").type("ABCDEFGHIJKLMNOPKRSTUVWXYZ").find("input").blur();
